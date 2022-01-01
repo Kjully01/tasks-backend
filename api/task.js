@@ -56,13 +56,13 @@ module.exports = app => {
             .then(task => {
                 if(!task){
                     const msg = `Task com id ${req.params.id} não encontrada`
-                return res.status(400).send(msg)
+                    return res.status(400).send(msg)
                 }
                 
-                const doneAt = task.soneAt ? null : new Date()
+                const doneAt = task.doneAt ? null : new Date()
                 updateTaskDoneAt (req, res, doneAt)
             })
-            .catch(err => res.statis(400).json(err))
+            .catch(err => res.status(400).json(err))
     }
 
     return { getTasks, save, remove, toggleTask }
